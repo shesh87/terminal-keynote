@@ -2,12 +2,21 @@
 #put all slides in an array then .each 
 
 require 'terminfo'
+require 'pp'
+
+# pp TermInfo.screen_size
 
 class Keynote
+	# attr_reader :width
+	# screen = TermInfo.screen_size
+	# height = screen[0]
+	# width = screen[1]
+	# sc_width = width.to_i
 	
+
 	def slide1
 		one = IO.read("terminal_slide1")
-		puts "#{one}"
+		puts "#{one}".center(173)
 	end
 	def slide2
 		two = IO.read("terminal_slide2")
