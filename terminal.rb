@@ -57,7 +57,8 @@ count = 0
 
 if answer == "next"
 	if count == 2
-		apple.slideshow(0)
+		count = 0
+		apple.slideshow(count)
 	else
 		count +=1
 		apple.slideshow(count)
@@ -75,32 +76,25 @@ end
 
 while answer != "stop"
 	puts "<- Previous || Stop || Next ->"
-answer2 = gets.chomp
-answer = answer2.downcase
+	answer2 = gets.chomp
+	answer = answer2.downcase
 
-
-
-if answer == "next"
-	# count +=1
-	# 	if count == 3
-	# 		count = 1
-	# 		# puts "done"
-	# 	end
-	# apple.slideshow(count)
-	if count == 2
-		apple.slideshow(0)
-	else
-		count +=1
+	if answer == "next"
+		if count == 2
+			count = 0
+			apple.slideshow(count)
+		else
+			count +=1
+			apple.slideshow(count)
+		end
+	elsif answer == "previous"
+		count -=1
 		apple.slideshow(count)
+	elsif answer == "stop"
+		# puts "Good-Bye"
+	else
+		puts "Please enter 'Previous', 'Next' or 'Stop'."
 	end
-elsif answer == "previous"
-	count -=1
-	apple.slideshow(count)
-elsif answer == "stop"
-	# puts "Good-Bye"
-else
-	puts "Please enter 'Previous', 'Next' or 'Stop'."
-end
 end
 
 
