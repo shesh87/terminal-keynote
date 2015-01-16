@@ -4,16 +4,12 @@
 require 'terminfo'
 require 'pp'
 
-# pp TermInfo.screen_size
-
 class Keynote
+	attr_reader :slide
 
-	# attr_reader :width
-	# screen = TermInfo.screen_size
-	# height = screen[0]
-	# width = screen[1]
-	# sc_width = width.to_i
-	
+	def initialize(file)
+		@slide = IO.read(file).split("\n----\n")
+	end
 
 	# def slide1
 	# 	one = IO.read("terminal_slide1")
@@ -23,18 +19,6 @@ class Keynote
 	# end
 	def slideshow(number)
 		@number = number
-		slide = IO.read("my_slides").split("\n----\n")
-		# slide.to_enum.with_index(1)
-		# slide.each do |line|
-		#  	puts line.center(173)
-		# end
-		
-		# slide.each do
-		# 	puts "\n" * 15
-		#  	puts slide[number].center(173)
-		#  	puts "\n" * 15
-		# end
-		puts number
 		puts "\n" * 15
 		puts slide[number].center(173)
 		puts "\n" * 15
@@ -47,8 +31,9 @@ end
 #____________________________________________
 
 
-apple = Keynote.new
+apple = Keynote.new "my_slides"
 
+puts apple.slideshow(0)
 puts "<- Previous || Stop || Next ->"
 answer2 = gets.chomp
 answer = answer2.downcase
