@@ -3,20 +3,19 @@
 
 require 'terminfo'
 require 'pp'
+# pp TermInfo.screen_size
 
 class Keynote
-	attr_reader :slide
+	attr_reader :slide, :width
 
 	def initialize(file)
 		@slide = IO.read(file).split("\n----\n")
+		# size = TermInfo.screen_size
+		# @width = size[0]
+		# @height = size[1]
 	end
 
-	# def slide1
-	# 	one = IO.read("terminal_slide1")
-	# 	puts "\n" * 15
-	# 	puts "#{one}".center(173)
-	# 	puts "\n" * 15
-	# end
+
 	def slideshow(number)
 		@number = number
 		puts "\n" * 15
@@ -52,7 +51,6 @@ elsif answer == "previous"
 	count -=1
 	apple.slideshow(count)
 elsif answer == "stop"
-	# puts "Good-Bye"
 else
 	puts "Please enter 'Previous', 'Next' or 'Stop'."
 end
@@ -76,7 +74,6 @@ while answer != "stop"
 		count -=1
 		apple.slideshow(count)
 	elsif answer == "stop"
-		# puts "Good-Bye"
 	else
 		puts "Please enter 'Previous', 'Next' or 'Stop'."
 	end
